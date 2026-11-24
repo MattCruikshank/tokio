@@ -271,9 +271,9 @@ impl TcpListener {
     /// [`std::net::TcpListener`]: std::net::TcpListener
     /// [`set_nonblocking`]: fn@std::net::TcpListener::set_nonblocking
     pub fn into_std(self) -> io::Result<std::net::TcpListener> {
-        #[cfg(unix)]
+        #[cfg(any(unix, target_os = "hermit"))]
         {
-            use std::os::unix::io::{FromRawFd, IntoRawFd};
+            use std::os::fd::{FromRawFd, IntoRawFd};
             self.io
                 .into_inner()
                 .map(IntoRawFd::into_raw_fd)

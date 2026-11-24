@@ -605,6 +605,7 @@ impl TcpSocket {
         target_os = "illumos",
         target_os = "haiku",
         target_os = "wasi",
+        target_os = "hermit",
     )))]
     #[cfg_attr(
         docsrs,
@@ -615,6 +616,7 @@ impl TcpSocket {
             target_os = "illumos",
             target_os = "haiku",
             target_os = "wasi",
+            target_os = "hermit",
         ))))
     )]
     pub fn tos_v4(&self) -> io::Result<u32> {
@@ -635,6 +637,7 @@ impl TcpSocket {
         target_os = "illumos",
         target_os = "haiku",
         target_os = "wasi",
+        target_os = "hermit",
     )))]
     #[cfg_attr(
         docsrs,
@@ -645,6 +648,7 @@ impl TcpSocket {
             target_os = "illumos",
             target_os = "haiku",
             target_os = "wasi",
+            target_os = "hermit",
         ))))
     )]
     pub fn tos(&self) -> io::Result<u32> {
@@ -669,6 +673,7 @@ impl TcpSocket {
         target_os = "illumos",
         target_os = "haiku",
         target_os = "wasi",
+        target_os = "hermit",
     )))]
     #[cfg_attr(
         docsrs,
@@ -679,6 +684,7 @@ impl TcpSocket {
             target_os = "illumos",
             target_os = "haiku",
             target_os = "wasi",
+            target_os = "hermit",
         ))))
     )]
     pub fn set_tos_v4(&self, tos: u32) -> io::Result<()> {
@@ -699,6 +705,7 @@ impl TcpSocket {
         target_os = "illumos",
         target_os = "haiku",
         target_os = "wasi",
+        target_os = "hermit",
     )))]
     #[cfg_attr(
         docsrs,
@@ -709,6 +716,7 @@ impl TcpSocket {
             target_os = "illumos",
             target_os = "haiku",
             target_os = "wasi",
+            target_os = "hermit",
         ))))
     )]
     pub fn set_tos(&self, tos: u32) -> io::Result<()> {
@@ -995,7 +1003,7 @@ impl fmt::Debug for TcpSocket {
 
 // These trait implementations can't be build on Windows, so we completely
 // ignore them, even when building documentation.
-#[cfg(any(unix, target_os = "wasi"))]
+#[cfg(any(unix, target_os = "wasi", target_os = "hermit"))]
 cfg_unix_or_wasi! {
     impl AsRawFd for TcpSocket {
         fn as_raw_fd(&self) -> RawFd {
